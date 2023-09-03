@@ -53,8 +53,8 @@ export const lever = (latitude, longitude, decalageHoraire, jour, mois, an) => {
     return hLever;
 }
 
+//Retourne l'heure du jour par rapport à une variable décimale de la journée
 export const conversionDecJourHeure = (HeureDEC) => {
-    //Retourne l'heure du jour par rapport à une variable décimale de la journée
     const Heure = Math.floor(HeureDEC * 24)
     const Minutes = Math.round(((HeureDEC * 24) - Heure) * 60)
     return Heure + "h" + deuxchiffres(Minutes)
