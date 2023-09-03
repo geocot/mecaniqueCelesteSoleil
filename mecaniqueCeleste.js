@@ -43,11 +43,11 @@ function angleHoraireHeure(latitude, jour, mois, an) {
 
 function equationTempsMinuteDEC(jour, mois, an) {
     return (calcValeurC(jour, mois, an) + calcValeurR(jour, mois, an)) * 4
-
 }
 
 //Retourne le lever du soleil en mode décimal
 export const lever = (latitude, longitude, decalageHoraire, jour, mois, an) => {
+    longitude = longitude * -1;
     let hLever = (Math.floor(12 - angleHoraireHeure(latitude, jour, mois, an) + equationTempsMinuteDEC(jour, mois, an) / 60 + longitude * 4 / 60 + decalageHoraire) + Math.round((((12 - angleHoraireHeure(latitude, jour, mois, an)) + equationTempsMinuteDEC(jour, mois, an) / 60 + longitude * 4 / 60 + decalageHoraire) - Math.floor((12 - angleHoraireHeure(latitude, jour, mois, an)) + equationTempsMinuteDEC(jour, mois, an) / 60 + longitude * 4 / 60 + decalageHoraire)) * 60, 0) / 60) / 24; 
     if (isNaN(hLever)) { hLever = 0; } 
     return hLever;
@@ -62,6 +62,7 @@ export const conversionDecJourHeure = (HeureDEC) => {
 
 //Calcule la durée du jour par rapport au lever et coucher du soleil
 export const dureeJour = (latitude, longitude, decalageHoraire, jour, mois, an) => {
+    longitude = longitude * -1;
     const DJ_DEC = coucher(latitude, longitude, decalageHoraire, jour, mois, an) - lever(latitude, longitude, decalageHoraire, jour, mois, an); 
     if (DJ_DEC > 0) {
         return conversionDecJourHeure(DJ_DEC)
@@ -70,6 +71,7 @@ export const dureeJour = (latitude, longitude, decalageHoraire, jour, mois, an) 
 
 //Retourne l'heure du coucher du soleil en mode décimal
 export const coucher = (latitude, longitude, decalageHoraire, jour, mois, an) => {
+    longitude = longitude * -1;
     let hCoucher = (Math.floor(12 + angleHoraireHeure(latitude, jour, mois, an) + equationTempsMinuteDEC(jour, mois, an) / 60 + longitude * 4 / 60 + decalageHoraire) + Math.round(((12 + angleHoraireHeure(latitude, jour, mois, an) + equationTempsMinuteDEC(jour, mois, an) / 60 + longitude * 4 / 60 + decalageHoraire) - Math.floor(12 + angleHoraireHeure(latitude, jour, mois, an) + equationTempsMinuteDEC(jour, mois, an) / 60 + longitude * 4 / 60 + decalageHoraire)) * 60, 0) / 60) / 24; 
     if (isNaN(hCoucher)) { hCoucher = 0; } 
     return hCoucher;
