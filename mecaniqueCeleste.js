@@ -13,6 +13,10 @@ export const jourAnnee = (jour, mois, an) => {
     return N1 - N2 * K + jour - 30;
 }
 
+export const elevationSolairMaximumDuJour = (lat, jour, mois, an) =>{
+    return 90-(lat - declinaison(jour, mois, an));
+}
+
 function calcValeurM(jour, mois, an) {
     return (357 + 0.9856 * jourAnnee(jour, mois, an)) % 360
 }
