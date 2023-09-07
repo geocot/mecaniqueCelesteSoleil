@@ -1,7 +1,7 @@
 //*******************************************
 //**            Martin Couture             **
-//** Calcul du lever et coucher du soleil **
-//** Calcul du rang du jour dans l'année  **
+//**  Calcul du lever et coucher du soleil **
+//**  Calcul du rang du jour dans l'année  **
 //**            Septembre 2023             **
 //*******************************************
 
